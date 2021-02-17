@@ -74,11 +74,22 @@
 
 
   <script>
-
-    const ROOM_NAME = 'MyElectronAppRedirectPOC';
     const BASE_URL_WEB = 'https://meet.jit.si';
-    const appUri = `jitsis-meet://${ROOM_NAME}`;
-    const webUri = `${BASE_URL_WEB}/${ROOM_NAME}`;
+
+    // Get room name from get param
+    let room = '';
+
+    location.search
+      .substr(1)
+      .split("&")
+      .forEach(function (item) {
+        let pair = item.split("=");
+        console.log(pair);
+        if (pair[0] === 'room') room = decodeURIComponent(pair[1]);
+      });
+
+    const appUri = `jitsi-meet://${room}`;
+    const webUri = `${BASE_URL_WEB}/${room}`;
 
 
     function loadDesktopApp(nativeAppUri, onFailure, onMaybeLoaded) {
