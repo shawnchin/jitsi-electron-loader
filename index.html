@@ -147,6 +147,10 @@
       document.getElementById('launch-failed').style.display = 'block';
     }
 
+    function doDownload() {
+      window.open('https://github.com/jitsi/jitsi-meet-electron' , '_blank');
+    }
+
     function showLoadedMessage() {
       // if loadDesktopApp() did not fail, all this tell us is that the jitsi-meet:// scheme may have been registered.
       // It does not tell us if the user gave permission to load the external app, or if the scheme failed to
